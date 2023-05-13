@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\dev_repo\ProductionApp\ProductionApp.Common\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\dev_repo\ProductionApp\ProductionApp.Common\.editorconfig" />
+  </ItemGroup>
+
 </Project>
