@@ -1,7 +1,8 @@
-﻿namespace ProductionApp.Common.Abstract;
+﻿using ProductionApp.Entities.Abstract;
 
-internal interface IResponse<T> : IResponse
-    where T : class, new()
+namespace ProductionApp.Common.Abstract;
+
+public interface IResponse<T> : IResponse
 {
     T? Data { get; set; }
 }

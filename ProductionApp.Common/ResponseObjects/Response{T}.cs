@@ -1,10 +1,10 @@
 ﻿using ProductionApp.Common.Abstract;
 using ProductionApp.Common.ComplexTypes;
+using ProductionApp.Entities.Abstract;
 
 namespace ProductionApp.Common.ResponseObjects;
 
-public class Response<T> : Response, IResponse<T>
-    where T : class, new()
+public class Response<T> : Response, IResponse<T>, IBaseEntity
 {
     public Response(ResponseType responseType)
         : base(responseType)

@@ -14,4 +14,8 @@
     <None Include="C:\dev_repo\ProductionApp\ProductionApp.Common\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProductionApp.Entities\ProductionApp.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
