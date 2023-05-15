@@ -11,5 +11,6 @@ public class GroupProfile : Profile
         this.CreateMap<Group, GroupListDto>().ReverseMap();
         this.CreateMap<Group, GroupAddDto>().ReverseMap();
         this.CreateMap<Group, GroupUpdateDto>().ReverseMap();
+        this.CreateMap<Group, GenerateGroupCodeDto>().ReverseMap();
     }
 }

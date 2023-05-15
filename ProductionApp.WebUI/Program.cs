@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using ProductionApp.Service.DependencyResolvers;
+using ProductionApp.WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services
     .AddFluentValidation();
 
 builder.Services.AddDependencies(builder.Configuration);
+builder.Services.ToasterExtension();
 
 
 

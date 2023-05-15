@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string active = null;
+    if (TempData["MenuActive"] is not null)
+    {
+        active = TempData["MenuActive"].ToString();
+    }
+}
+<!DOCTYPE html>
 <html lang="tr" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="~/admin-theme/assets/" data-template="vertical-menu-template-free">
 <head>
     <meta charset="utf-8" />
@@ -41,7 +48,7 @@
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
-                    <li class="menu-item">
+                    <li class="menu-item @(active=="Dashboard" ? "active" : "")">
                         <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
@@ -50,13 +57,13 @@
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pages</span>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @(active=="Group" ? "active" : "")">
                         <a asp-area="Admin" asp-controller="Group" asp-action="List" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Gruplar</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item @(active=="Stock" ? "active" : "")">
                         <a asp-area="Admin" asp-controller="Stock" asp-action="List" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Stoklar</div>
@@ -66,11 +73,7 @@
             </aside>
             <div class="layout-page">
                 <div class="content-wrapper">
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        <div class="row">
-                            @RenderBody()
-                        </div>
-                    </div>
+                    @RenderBody()
                     <footer class="content-footer footer bg-footer-theme">
                         <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                             <div class="mb-2 mb-md-0">
@@ -91,5 +94,8 @@
     <script src="~/admin-theme/assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <script src="~/admin-theme/assets/js/main.js"></script>
     <script src="~/admin-theme/assets/js/dashboards-analytics.js"></script>
+
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts",false)
 </body>
 </html>
