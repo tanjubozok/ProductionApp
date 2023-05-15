@@ -25,7 +25,7 @@ public class GroupManager : IGroupService
     public async Task<IResponse<GroupAddDto>> AddAsync(GroupAddDto dto)
     {
         var group = _mapper.Map<Group>(dto);
-        group.CreatedDate = dto.CreatedDate;
+        group.CreatedDate = DateTime.Now;
         _ = await _groupRepository.CreateAsync(group);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
@@ -33,11 +33,23 @@ public class GroupManager : IGroupService
         return new Response<GroupAddDto>(ResponseType.SaveError, "Kayıt sırasında hata oluştu");
     }
 
+    public async Task<string> GenerateGroupCodeAsync()
+        => await _groupRepository.GenerateGroupCodeAsync();
+
     public async Task<IResponse<List<GroupListDto>>> GetAllAsync()
     {
         var groups = await _groupRepository.GetAllAsync();
         var dto = _mapper.Map<List<GroupListDto>>(groups);
         return new Response<List<GroupListDto>>(ResponseType.Success, dto);
+    }
+
+    public async Task<IResponse<GroupUpdateDto>> GetByIdAsync(int groupId)
+    {
+        var group = await _groupRepository.GetByIdAsync(groupId);
+        if (group is null)
+            return new Response<GroupUpdateDto>(ResponseType.NotFound, "Grup bulunamadı");
+        var dto = _mapper.Map<GroupUpdateDto>(group);
+        return new Response<GroupUpdateDto>(ResponseType.Success, dto);
     }
 
     public async Task<IResponse<GroupListDto>> GetOneAsync()
