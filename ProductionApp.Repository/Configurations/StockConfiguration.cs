@@ -23,6 +23,9 @@ public class StockConfiguration : IEntityTypeConfiguration<Stock>
             .IsRequired()
             .HasMaxLength(200);
 
+        builder.Property(x => x.Description)
+            .HasMaxLength(2000);
+
         builder.Property(x => x.Price)
             .IsRequired()
             .HasColumnType("decimal(18,3)");

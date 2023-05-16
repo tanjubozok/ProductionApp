@@ -11,13 +11,11 @@ namespace ProductionApp.Service.Manager;
 
 public class GroupManager : IGroupService
 {
-    private readonly IGroupRepository _groupRepository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public GroupManager(IGroupRepository groupRepository, IMapper mapper, IUnitOfWork unitOfWork)
+    public GroupManager(IMapper mapper, IUnitOfWork unitOfWork)
     {
-        _groupRepository = groupRepository;
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
@@ -26,7 +24,7 @@ public class GroupManager : IGroupService
     {
         var group = _mapper.Map<Group>(dto);
         group.CreatedDate = DateTime.Now;
-        _ = await _groupRepository.CreateAsync(group);
+        _ = await _unitOfWork.Group.CreateAsync(group);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
             return new Response<GroupAddDto>(ResponseType.Success, dto);
@@ -34,54 +32,33 @@ public class GroupManager : IGroupService
     }
 
     public async Task<string> GenerateGroupCodeAsync()
-        => await _groupRepository.GenerateGroupCodeAsync();
+        => await _unitOfWork.Group.GenerateGroupCodeAsync();
 
     public async Task<IResponse<List<GroupListDto>>> GetAllAsync()
     {
-        var groups = await _groupRepository.GetAllAsync();
+        var groups = await _unitOfWork.Group.GetAllAsync();
         var dto = _mapper.Map<List<GroupListDto>>(groups);
         return new Response<List<GroupListDto>>(ResponseType.Success, dto);
     }
 
     public async Task<IResponse<GroupUpdateDto>> GetByIdAsync(int groupId)
     {
-        var group = await _groupRepository.GetByIdAsync(groupId);
+        var group = await _unitOfWork.Group.GetByIdAsync(groupId);
         if (group is null)
             return new Response<GroupUpdateDto>(ResponseType.NotFound, "Grup bulunamadı");
         var dto = _mapper.Map<GroupUpdateDto>(group);
         return new Response<GroupUpdateDto>(ResponseType.Success, dto);
     }
 
-    public async Task<IResponse<GroupListDto>> GetOneAsync()
-    {
-        var group = await _groupRepository.GetOneAsync();
-        var dto = _mapper.Map<GroupListDto>(group);
-        return new Response<GroupListDto>(ResponseType.Success, dto);
-    }
-
-    public async Task<IResponse> RemoveAsync(int id)
-    {
-        var group = await _groupRepository.GetByIdAsync(id);
-        if (group is not null)
-        {
-            _groupRepository.Delete(group);
-            var result = await _unitOfWork.CommitAsync();
-            if (result > 0)
-                return new Response<GroupAddDto>(ResponseType.Success, $"{group.Name} silindi.");
-            return new Response<GroupAddDto>(ResponseType.SaveError, "Silme sırasında hata oluştu");
-        }
-        return new Response<GroupAddDto>(ResponseType.NotFound, "Grup bulunamadı.");
-    }
-
     public async Task<IResponse<GroupUpdateDto>> UpdateAsync(GroupUpdateDto dto)
     {
-        var updatedData = await _groupRepository.GetByIdAsync(dto.Id);
+        var updatedData = await _unitOfWork.Group.GetByIdAsync(dto.Id);
         if (updatedData is not null)
         {
             var group = _mapper.Map<Group>(dto);
             group.ModifiedDate = DateTime.Now;
             group.CreatedDate = updatedData.CreatedDate;
-            _groupRepository.Update(group, updatedData);
+            _unitOfWork.Group.Update(group, updatedData);
             var result = await _unitOfWork.CommitAsync();
             if (result > 0)
                 return new Response<GroupUpdateDto>(ResponseType.Success);
