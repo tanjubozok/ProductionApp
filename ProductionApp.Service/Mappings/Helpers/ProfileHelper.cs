@@ -9,7 +9,8 @@ public static class ProfileHelper
     {
         return new List<Profile>
         {
-            new GroupProfile()
+            new GroupProfile(),
+            new StockProfile()
         };
     }
 }

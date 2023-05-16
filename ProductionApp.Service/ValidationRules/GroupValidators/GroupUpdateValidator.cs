@@ -1,12 +1,15 @@
 ﻿using FluentValidation;
 using ProductionApp.DTOs.GroupDtos;
 
-namespace ProductionApp.Service.ValidationRules;
+namespace ProductionApp.Service.ValidationRules.GroupValidators;
 
-public class GroupAddDtoValidator : AbstractValidator<GroupAddDto>
+public class GroupUpdateValidator : AbstractValidator<GroupUpdateDto>
 {
-    public GroupAddDtoValidator()
+    public GroupUpdateValidator()
     {
+        RuleFor(x => x.Id)
+            .NotEmpty().WithMessage("Grup id boş olamaz");
+
         RuleFor(x => x.Code)
             .NotEmpty().WithMessage("Grup kodu boş olamaz")
             .MinimumLength(3).WithMessage("Grup kodu en az 3 karakter olmalıdır")

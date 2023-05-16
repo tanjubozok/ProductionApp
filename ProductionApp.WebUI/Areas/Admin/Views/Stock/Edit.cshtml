@@ -1,0 +1,83 @@
+﻿@model StockUpdateDto
+@{
+    TempData["Title"] = "Stok Güncelle";
+}
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+@*    <script>
+        $(document).ready(function () {
+            $('#priceInput').on('blur', function () {
+                var value = parseFloat($(this).val());
+                $(this).val(value.toLocaleString(undefined, {
+                    minimumFractionDigits: 3,
+                    maximumFractionDigits: 3
+                }));
+            });
+        });
+    </script>*@
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-1">
+        <span class="text-muted fw-light">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-dark">
+                Dashboard /
+            </a>
+            <a asp-area="Admin" asp-controller="Stock" asp-action="List" class="text-dark">
+                Stoklar /
+            </a>
+        </span>
+        @TempData["Title"]
+    </h4>
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form asp-area="Admin" asp-controller="Stock" asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="mb-3">
+                            <label asp-for="GroupId" class="form-label">Gruplar</label>
+                            <select asp-for="GroupId" asp-items="ViewBag.Groups" class="form-select">
+                                <option hidden value="-1">seçiniz</option>
+                            </select>
+                            <span asp-validation-for="GroupId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Code" class="form-label">Kod</label>
+                            <input asp-for="Code" class="form-control" placeholder="kod">
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Adı</label>
+                            <input asp-for="Name" class="form-control" placeholder="adı">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Açıklama</label>
+                            <textarea asp-for="Description" rows="5" class="form-control" placeholder="açıklama"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label">Fiyat</label>
+                            <input asp-for="Price" class="form-control" placeholder="fiyat" id="priceInput" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="VAT" class="form-label">KDV</label>
+                            <input asp-for="VAT" class="form-control" placeholder="kdv" id="vatInput">
+                            <span asp-validation-for="VAT" class="text-danger"></span>
+                        </div>
+                        <a asp-area="Admin" asp-controller="Stock" asp-action="List" class="btn btn-dark">
+                            <i class='bx bx-arrow-from-right'></i>
+                            Listeye geri dön
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bx bx-save"></i>
+                            Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
