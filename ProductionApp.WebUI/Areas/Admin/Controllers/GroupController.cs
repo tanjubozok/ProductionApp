@@ -47,7 +47,7 @@ public class GroupController : Controller
             var result = await _groupService.AddAsync(dto);
             if (result.ResponseTypes == ResponseType.Success)
             {
-                _notifyService.Success("Eklendi");
+                _notifyService.Success("Added");
                 return RedirectToAction("List");
             }
             _notifyService.Error(result.Message);
@@ -75,7 +75,7 @@ public class GroupController : Controller
             var result = await _groupService.UpdateAsync(dto);
             if (result.ResponseTypes == ResponseType.Success)
             {
-                _notifyService.Success("Güncellendi");
+                _notifyService.Success("Updated");
                 return RedirectToAction("List");
             }
             _notifyService.Error(result.Message);

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProductionApp.Entities.Models;
 using ProductionApp.Repository.Configurations;
 using ProductionApp.Repository.Seeds;
 
 namespace ProductionApp.Repository.Context;
 
-public class DatabaseContext : DbContext
+public class DatabaseContext : IdentityDbContext<AppUser, AppRole, int>
 {
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)
@@ -25,4 +26,8 @@ public class DatabaseContext : DbContext
 
     public DbSet<Group> Groups { get; set; }
     public DbSet<Stock> Stocks { get; set; }
+    public DbSet<Address>? Address { get; set; }
+    public DbSet<City>? Cities { get; set; }
+    public DbSet<District>? Districts { get; set; }
+    public DbSet<CustomerType>? CustomerType { get; set; }
 }

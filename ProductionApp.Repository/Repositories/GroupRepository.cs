@@ -17,7 +17,7 @@ public class GroupRepository : BaseRepository<Group>, IGroupRepository
                     .OrderByDescending(x => x.Id)
                     .FirstOrDefaultAsync();
 
-        string groupCode = maxIdRecord.Code;
+        string groupCode = maxIdRecord!.Code!;
         int counter = 1;
         int number = int.Parse(groupCode.Substring(2));
         number += counter;

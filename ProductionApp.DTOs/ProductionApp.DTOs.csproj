@@ -10,4 +10,12 @@
     <ProjectReference Include="..\ProductionApp.Common\ProductionApp.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\dev_repo\ProductionApp\ProductionApp.DTOs\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\dev_repo\ProductionApp\ProductionApp.DTOs\.editorconfig" />
+  </ItemGroup>
+
 </Project>
