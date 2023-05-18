@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,8 +34,32 @@ public static class DependencyExtension
 
         #region Identity Configurations
 
-        services.AddIdentity<AppUser, AppRole>()
-            .AddEntityFrameworkStores<DatabaseContext>();
+        services.AddIdentity<AppUser, AppRole>(opt =>
+        {
+            // Password settings
+            opt.Password.RequireDigit = true;
+            opt.Password.RequiredLength = 4;
+            opt.Password.RequireNonAlphanumeric = false;
+            opt.Password.RequireUppercase = false;
+            opt.Password.RequireLowercase = false;
+            opt.Password.RequiredUniqueChars = 0;
+        })
+                   .AddEntityFrameworkStores<DatabaseContext>();
+
+        services.ConfigureApplicationCookie(opt =>
+        {
+            opt.Cookie.Name = "JobTrackingApp";
+            opt.Cookie.SameSite = SameSiteMode.Strict;
+            opt.Cookie.HttpOnly = true;
+            opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
+            opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+
+            opt.LoginPath = "/Member/Account/Login";
+            opt.LogoutPath = "/Member/Account/Logout";
+            opt.AccessDeniedPath = "/Member/Account/AccessDenied";
+        });
+
 
         #endregion
 
@@ -51,6 +76,8 @@ public static class DependencyExtension
         #region DI
         // Repositories
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IGroupRepository, GroupRepository>();
+        services.AddScoped<IStockRepository, StockRepository>();
 
         // Services
         services.AddScoped<IGroupService, GroupManager>();

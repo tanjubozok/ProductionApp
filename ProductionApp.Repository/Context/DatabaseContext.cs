@@ -18,10 +18,19 @@ public class DatabaseContext : IdentityDbContext<AppUser, AppRole, int>
         // configurations
         modelBuilder.ApplyConfiguration(new GroupConfiguration());
         modelBuilder.ApplyConfiguration(new StockConfiguration());
+        modelBuilder.ApplyConfiguration(new AddressConfiguration());
+        modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+        modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+        modelBuilder.ApplyConfiguration(new CityConfiguration());
+        modelBuilder.ApplyConfiguration(new CustomerTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new DistrictConfiguration());
 
         // seeds
         modelBuilder.ApplyConfiguration(new GroupSeed());
         modelBuilder.ApplyConfiguration(new StockSeed());
+        modelBuilder.ApplyConfiguration(new CustomerTypeSeed());
+
+        base.OnModelCreating(modelBuilder);
     }
 
     public DbSet<Group> Groups { get; set; }

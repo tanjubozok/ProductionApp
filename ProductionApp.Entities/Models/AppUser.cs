@@ -8,10 +8,6 @@ public class AppUser : IdentityUser<int>, IBaseEntity
     public string? Name { get; set; }
     public string? Surname { get; set; }
 
-
-    public int? AddressId { get; set; }
-    public Address? Address { get; set; }
-
     public int? DistrictId { get; set; }
     public District? District { get; set; }
 

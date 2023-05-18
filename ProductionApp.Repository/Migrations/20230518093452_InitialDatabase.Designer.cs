@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductionApp.Repository.Context;
 
@@ -11,9 +12,11 @@ using ProductionApp.Repository.Context;
 namespace ProductionApp.Repository.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230518093452_InitialDatabase")]
+    partial class InitialDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,20 +319,6 @@ namespace ProductionApp.Repository.Migrations
                         .HasFilter("[AppUserId] IS NOT NULL");
 
                     b.ToTable("CustomerTypes", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            LongName = "Alıcı",
-                            ShortName = "A"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            LongName = "Satıcı",
-                            ShortName = "S"
-                        });
                 });
 
             modelBuilder.Entity("ProductionApp.Entities.Models.District", b =>
@@ -399,7 +388,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 1,
                             Code = "01",
                             Color = "secondary",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2391),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3173),
                             Name = "Telefon"
                         },
                         new
@@ -407,7 +396,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 2,
                             Code = "02",
                             Color = "warning",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2401),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3195),
                             Name = "Bilgisayar"
                         },
                         new
@@ -415,7 +404,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 3,
                             Code = "03",
                             Color = "primary",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2403),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3199),
                             Name = "Tablet"
                         },
                         new
@@ -423,7 +412,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 4,
                             Code = "04",
                             Color = "dark",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2404),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3201),
                             Name = "Tv"
                         },
                         new
@@ -431,7 +420,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 5,
                             Code = "05",
                             Color = "info",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2406),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3203),
                             Name = "Beyaz Eşya"
                         },
                         new
@@ -439,7 +428,7 @@ namespace ProductionApp.Repository.Migrations
                             Id = 6,
                             Code = "06",
                             Color = "success",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2407),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(3205),
                             Name = "Oyun Konsolları"
                         });
                 });
@@ -492,7 +481,7 @@ namespace ProductionApp.Repository.Migrations
                         {
                             Id = 1,
                             Code = "152.11.001",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2817),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(4296),
                             Description = "Samsung Galaxy Z Fold3, Samsung Galaxy Z Fold3, Samsung Galaxy Z Fold3",
                             GroupId = 1,
                             Name = "Samsung Galaxy Z Fold3",
@@ -503,7 +492,7 @@ namespace ProductionApp.Repository.Migrations
                         {
                             Id = 2,
                             Code = "152.11.002",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2824),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(4320),
                             Description = "Samsung Galaxy Z Flip3, Samsung Galaxy Z Flip3, Samsung Galaxy Z Flip3",
                             GroupId = 1,
                             Name = "Samsung Galaxy Z Flip3",
@@ -514,7 +503,7 @@ namespace ProductionApp.Repository.Migrations
                         {
                             Id = 3,
                             Code = "152.11.003",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2826),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(4323),
                             Description = "Samsung Galaxy S20 FE (SM-G780G), Samsung Galaxy S20 FE (SM-G780G), Samsung Galaxy S20 FE (SM-G780G)",
                             GroupId = 1,
                             Name = "Samsung Galaxy S20 FE (SM-G780G)",
@@ -525,7 +514,7 @@ namespace ProductionApp.Repository.Migrations
                         {
                             Id = 4,
                             Code = "152.21.001",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2913),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(4326),
                             Description = "Apple iPhone 11 64 CB Siyah, Apple iPhone 11 64 CB Siyah, Apple iPhone 11 64 CB Siyah",
                             GroupId = 1,
                             Name = "Apple iPhone 11 64 CB Siyah",
@@ -536,7 +525,7 @@ namespace ProductionApp.Repository.Migrations
                         {
                             Id = 5,
                             Code = "152.21.002",
-                            CreatedDate = new DateTime(2023, 5, 18, 13, 16, 26, 532, DateTimeKind.Local).AddTicks(2915),
+                            CreatedDate = new DateTime(2023, 5, 18, 12, 34, 52, 477, DateTimeKind.Local).AddTicks(4328),
                             Description = "Apple iPhone 12 64 CB Siyah, Apple iPhone 12 64 CB Siyah, Apple iPhone 12 64 CB Siyah",
                             GroupId = 1,
                             Name = "Apple iPhone 12 64 CB Siyah",

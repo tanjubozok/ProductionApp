@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification;
+using ProductionApp.Repository.Context;
 
 namespace ProductionApp.WebUI.Extensions;
 
@@ -12,5 +13,12 @@ public static class ServicesExtensions
             opt.IsDismissable = true;
             opt.Position = NotyfPosition.BottomRight;
         });
+    }
+
+    public static void SeedDataExtension(this IServiceCollection services)
+    {
+        using var scope = services.BuildServiceProvider().CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+        SeedData.InitializeAsync(scope.ServiceProvider).Wait();
     }
 }

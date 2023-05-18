@@ -10,6 +10,8 @@ builder.Services
 
 builder.Services.AddDependencies(builder.Configuration);
 builder.Services.ToasterExtension();
+//builder.Services.SeedDataExtension();
+
 
 
 

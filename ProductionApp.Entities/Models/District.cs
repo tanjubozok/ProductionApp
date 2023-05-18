@@ -10,5 +10,6 @@ public class District : IBaseEntity
     public int CityId { get; set; }
     public City? City { get; set; }
 
+    public int? AppUserId { get; set; }
     public AppUser? AppUser { get; set; }
 }
