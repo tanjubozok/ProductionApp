@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProductionApp.DTOs.GroupDtos;
 using ProductionApp.DTOs.StockDtos;
+using ProductionApp.Entities.Models;
 using ProductionApp.Repository.Abstract;
 using ProductionApp.Repository.Context;
 using ProductionApp.Repository.Repositories;
@@ -27,6 +28,13 @@ public static class DependencyExtension
         {
             opt.UseSqlServer(configuration.GetConnectionString("LocalSqlServer"));
         });
+
+        #endregion
+
+        #region Identity Configurations
+
+        services.AddIdentity<AppUser, AppRole>()
+            .AddEntityFrameworkStores<DatabaseContext>();
 
         #endregion
 

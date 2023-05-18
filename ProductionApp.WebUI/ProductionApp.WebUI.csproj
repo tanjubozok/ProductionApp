@@ -28,4 +28,12 @@
     <Folder Include="wwwroot\docs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\dev_repo\ProductionApp\ProductionApp.WebUI\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\dev_repo\ProductionApp\ProductionApp.WebUI\.editorconfig" />
+  </ItemGroup>
+
 </Project>

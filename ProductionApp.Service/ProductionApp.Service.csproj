@@ -15,4 +15,12 @@
     <ProjectReference Include="..\ProductionApp.Repository\ProductionApp.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\dev_repo\ProductionApp\ProductionApp.Service\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\dev_repo\ProductionApp\ProductionApp.Service\.editorconfig" />
+  </ItemGroup>
+
 </Project>
