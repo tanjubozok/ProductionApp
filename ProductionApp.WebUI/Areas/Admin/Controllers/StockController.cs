@@ -5,6 +5,7 @@ using ProductionApp.Common.ComplexTypes;
 using ProductionApp.Common.InfoMessages;
 using ProductionApp.DTOs.StockDtos;
 using ProductionApp.Service.Abstract;
+using ProductionApp.WebUI.CustomFilters;
 
 namespace ProductionApp.WebUI.Areas.Admin.Controllers;
 
@@ -41,18 +42,16 @@ public class StockController : Controller
     }
 
     [HttpPost]
+    [ValidModel]
     public async Task<IActionResult> Create(StockAddDto dto)
     {
-        if (ModelState.IsValid)
+        var dataResult = await _stockService.AddAsync(dto);
+        if (dataResult.ResponseTypes == ResponseType.Success)
         {
-            var dataResult = await _stockService.AddAsync(dto);
-            if (dataResult.ResponseTypes == ResponseType.Success)
-            {
-                _notifyService.Success("Eklendi");
-                return RedirectToAction("List");
-            }
-            _notifyService.Error(dataResult.Message);
+            _notifyService.Success("Eklendi");
+            return RedirectToAction("List");
         }
+        _notifyService.Error(dataResult.Message);
 
         var result = await _groupService.GetAllAsync();
         ViewBag.Groups = new SelectList(result.Data, "Id", "Name");
@@ -77,18 +76,17 @@ public class StockController : Controller
     }
 
     [HttpPost]
+    [ValidModel]
     public async Task<IActionResult> Edit(StockUpdateDto dto)
     {
-        if (ModelState.IsValid)
+        var result = await _stockService.UpdateAsync(dto);
+        if (result.ResponseTypes == ResponseType.Success)
         {
-            var result = await _stockService.UpdateAsync(dto);
-            if (result.ResponseTypes == ResponseType.Success)
-            {
-                _notifyService.Success("Güncellendi");
-                return RedirectToAction("List");
-            }
-            _notifyService.Error(result.Message);
+            _notifyService.Success("Güncellendi");
+            return RedirectToAction("List");
         }
+        _notifyService.Error(result.Message);
+
         var groupList = await _groupService.GetAllAsync();
         ViewBag.Groups = new SelectList(groupList.Data, "Id", "Name", dto.GroupId);
 

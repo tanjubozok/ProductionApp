@@ -4,6 +4,7 @@ using ProductionApp.Common.ComplexTypes;
 using ProductionApp.Common.InfoMessages;
 using ProductionApp.DTOs.GroupDtos;
 using ProductionApp.Service.Abstract;
+using ProductionApp.WebUI.CustomFilters;
 
 namespace ProductionApp.WebUI.Areas.Admin.Controllers;
 
@@ -40,18 +41,17 @@ public class GroupController : Controller
     }
 
     [HttpPost]
+    [ValidModel]
     public async Task<IActionResult> Create(GroupAddDto dto)
     {
-        if (ModelState.IsValid)
+        var result = await _groupService.AddAsync(dto);
+        if (result.ResponseTypes == ResponseType.Success)
         {
-            var result = await _groupService.AddAsync(dto);
-            if (result.ResponseTypes == ResponseType.Success)
-            {
-                _notifyService.Success("Added");
-                return RedirectToAction("List");
-            }
-            _notifyService.Error(result.Message);
+            _notifyService.Success("Added");
+            return RedirectToAction("List");
         }
+        _notifyService.Error(result.Message);
+
         return View(dto);
     }
 
@@ -68,18 +68,17 @@ public class GroupController : Controller
     }
 
     [HttpPost]
+    [ValidModel]
     public async Task<IActionResult> Edit(GroupUpdateDto dto)
     {
-        if (ModelState.IsValid)
+        var result = await _groupService.UpdateAsync(dto);
+        if (result.ResponseTypes == ResponseType.Success)
         {
-            var result = await _groupService.UpdateAsync(dto);
-            if (result.ResponseTypes == ResponseType.Success)
-            {
-                _notifyService.Success("Updated");
-                return RedirectToAction("List");
-            }
-            _notifyService.Error(result.Message);
+            _notifyService.Success("Updated");
+            return RedirectToAction("List");
         }
+        _notifyService.Error(result.Message);
+
         return View(dto);
     }
 }
