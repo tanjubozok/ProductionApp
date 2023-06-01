@@ -4,15 +4,14 @@ using ProductionApp.WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
-    .AddControllersWithViews()
-    .AddFluentValidation();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDependencies(builder.Configuration);
 builder.Services.ToasterExtension();
 //builder.Services.SeedDataExtension();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 
-
+builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
 ﻿namespace ProductionApp.Common.InfoMessages;
+
 public class RoleInfo
 {
     public const string Admin = "Admin";

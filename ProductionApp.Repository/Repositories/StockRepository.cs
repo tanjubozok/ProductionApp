@@ -7,26 +7,29 @@ namespace ProductionApp.Repository.Repositories;
 
 public class StockRepository : BaseRepository<Stock>, IStockRepository
 {
-    public StockRepository(DatabaseContext context) : base(context)
+    public StockRepository(DatabaseContext context)
+        : base(context)
     {
     }
 
     public async Task<List<Stock>> GetAllWithGroupAsync()
     {
         var result = _context.Stocks
-            .Include(x => x.Group)
-            .AsNoTracking();
+            .Include(x => x.Group);
 
-        return await result.ToListAsync();
+        return await result
+            .AsNoTracking()
+            .ToListAsync();
     }
 
     public async Task<Stock?> GetOneWithGroupAsync(int stockId)
     {
         var result = _context.Stocks
             .Include(x => x.Group)
-            .Where(x => x.Id == stockId)
-            .AsNoTracking();
+            .Where(x => x.Id == stockId);
 
-        return await result.FirstOrDefaultAsync();
+        return await result
+            .AsNoTracking()
+            .FirstOrDefaultAsync();
     }
 }

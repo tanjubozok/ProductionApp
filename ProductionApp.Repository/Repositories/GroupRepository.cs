@@ -7,7 +7,8 @@ namespace ProductionApp.Repository.Repositories;
 
 public class GroupRepository : BaseRepository<Group>, IGroupRepository
 {
-    public GroupRepository(DatabaseContext context) : base(context)
+    public GroupRepository(DatabaseContext context) 
+        : base(context)
     {
     }
 
