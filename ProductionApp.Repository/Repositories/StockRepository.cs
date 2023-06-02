@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProductionApp.Entities.Models;
-using ProductionApp.Repository.Abstract;
-using ProductionApp.Repository.Context;
-
-namespace ProductionApp.Repository.Repositories;
+﻿namespace ProductionApp.Repository.Repositories;
 
 public class StockRepository : BaseRepository<Stock>, IStockRepository
 {

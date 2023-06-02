@@ -1,7 +1,4 @@
-﻿using ProductionApp.Repository.Abstract;
-using ProductionApp.Repository.Context;
-
-namespace ProductionApp.Repository.UnitOfWorks;
+﻿namespace ProductionApp.Repository.UnitOfWorks;
 
 public class UnitOfWork : IUnitOfWork
 {

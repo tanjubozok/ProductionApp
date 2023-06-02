@@ -1,6 +1,4 @@
-﻿using ProductionApp.Entities.Abstract;
-
-namespace ProductionApp.Entities.Models;
+﻿namespace ProductionApp.Entities.Models;
 
 public class City : IBaseEntity
 {

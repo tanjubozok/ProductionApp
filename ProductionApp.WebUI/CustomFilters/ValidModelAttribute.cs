@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-
-namespace ProductionApp.WebUI.CustomFilters;
+﻿namespace ProductionApp.WebUI.CustomFilters;
 
 public class ValidModelAttribute : ActionFilterAttribute
 {

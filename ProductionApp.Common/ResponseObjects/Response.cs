@@ -1,7 +1,4 @@
-﻿using ProductionApp.Common.Abstract;
-using ProductionApp.Common.ComplexTypes;
-
-namespace ProductionApp.Common.ResponseObjects;
+﻿namespace ProductionApp.Common.ResponseObjects;
 
 public class Response : IResponse
 {

@@ -1,0 +1,10 @@
+﻿global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using ProductionApp.Entities.Abstract;
+global using ProductionApp.Entities.Models;
+global using ProductionApp.Repository.Abstract;
+global using ProductionApp.Repository.Configurations;
+global using ProductionApp.Repository.Context;
+global using ProductionApp.Repository.Seeds;
+global using System.Linq.Expressions;

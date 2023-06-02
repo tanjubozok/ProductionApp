@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProductionApp.Entities.Abstract;
-using ProductionApp.Repository.Abstract;
-using ProductionApp.Repository.Context;
-using System.Linq.Expressions;
-
-namespace ProductionApp.Repository.Repositories;
+﻿namespace ProductionApp.Repository.Repositories;
 
 public class BaseRepository<T> : IBaseRepository<T>
     where T : class, IBaseEntity, new()

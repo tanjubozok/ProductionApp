@@ -1,7 +1,4 @@
-﻿using ProductionApp.DTOs.Abstract;
-using ProductionApp.Entities.Models;
-
-namespace ProductionApp.DTOs.StockDtos;
+﻿namespace ProductionApp.DTOs.StockDtos;
 
 public class StockListDto : IBaseDto
 {

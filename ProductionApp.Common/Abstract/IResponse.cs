@@ -1,6 +1,4 @@
-﻿using ProductionApp.Common.ComplexTypes;
-
-namespace ProductionApp.Common.Abstract;
+﻿namespace ProductionApp.Common.Abstract;
 
 public interface IResponse
 {

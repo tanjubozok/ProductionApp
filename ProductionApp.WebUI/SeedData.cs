@@ -1,8 +1,4 @@
-﻿using Bogus;
-using Microsoft.AspNetCore.Identity;
-using ProductionApp.Entities.Models;
-
-namespace ProductionApp.WebUI;
+﻿namespace ProductionApp.WebUI;
 
 public class SeedData
 {

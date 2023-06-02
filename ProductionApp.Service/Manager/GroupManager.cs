@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using ProductionApp.Common.Abstract;
-using ProductionApp.Common.ComplexTypes;
-using ProductionApp.Common.ResponseObjects;
-using ProductionApp.DTOs.GroupDtos;
-using ProductionApp.Entities.Models;
-using ProductionApp.Repository.Abstract;
-using ProductionApp.Service.Abstract;
-
-namespace ProductionApp.Service.Manager;
+﻿namespace ProductionApp.Service.Manager;
 
 public class GroupManager : IGroupService
 {

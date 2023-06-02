@@ -1,7 +1,4 @@
-﻿using ProductionApp.Common.Abstract;
-using ProductionApp.DTOs.StockDtos;
-
-namespace ProductionApp.Service.Abstract;
+﻿namespace ProductionApp.Service.Abstract;
 
 public interface IStockService
 {

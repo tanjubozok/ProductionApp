@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using ProductionApp.DTOs.GroupDtos;
-using ProductionApp.Entities.Models;
-
-namespace ProductionApp.Service.Mappings.AutoMapper;
+﻿namespace ProductionApp.Service.Mappings.AutoMapper;
 
 public class GroupProfile : Profile
 {

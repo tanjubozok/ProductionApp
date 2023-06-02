@@ -1,6 +1,4 @@
-﻿using ProductionApp.DTOs.Abstract;
-
-namespace ProductionApp.DTOs.StockDtos;
+﻿namespace ProductionApp.DTOs.StockDtos;
 
 public class StockUpdateDto : IBaseDto
 {

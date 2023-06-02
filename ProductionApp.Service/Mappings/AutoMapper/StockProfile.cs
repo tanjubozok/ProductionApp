@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using ProductionApp.DTOs.StockDtos;
-using ProductionApp.Entities.Models;
-
-namespace ProductionApp.Service.Mappings.AutoMapper;
+﻿namespace ProductionApp.Service.Mappings.AutoMapper;
 
 public class StockProfile : Profile
 {

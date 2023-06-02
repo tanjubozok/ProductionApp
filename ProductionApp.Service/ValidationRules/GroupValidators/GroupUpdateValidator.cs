@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using ProductionApp.DTOs.GroupDtos;
-
-namespace ProductionApp.Service.ValidationRules.GroupValidators;
+﻿namespace ProductionApp.Service.ValidationRules.GroupValidators;
 
 public class GroupUpdateValidator : AbstractValidator<GroupUpdateDto>
 {

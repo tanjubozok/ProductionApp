@@ -1,7 +1,4 @@
-﻿using ProductionApp.Entities.Abstract;
-using System.Linq.Expressions;
-
-namespace ProductionApp.Repository.Abstract;
+﻿namespace ProductionApp.Repository.Abstract;
 
 public interface IBaseRepository<T>
     where T : class, IBaseEntity, new()
