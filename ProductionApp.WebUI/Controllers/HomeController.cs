@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace ProductionApp.WebUI.Controllers;
+﻿namespace ProductionApp.WebUI.Controllers;
 
 public class HomeController : Controller
 {

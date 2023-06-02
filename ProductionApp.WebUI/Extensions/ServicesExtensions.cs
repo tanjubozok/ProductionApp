@@ -1,7 +1,4 @@
-﻿using AspNetCoreHero.ToastNotification;
-using ProductionApp.Repository.Context;
-
-namespace ProductionApp.WebUI.Extensions;
+﻿namespace ProductionApp.WebUI.Extensions;
 
 public static class ServicesExtensions
 {

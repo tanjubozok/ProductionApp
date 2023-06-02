@@ -1,6 +1,4 @@
-﻿using ProductionApp.DTOs.Abstract;
-
-namespace ProductionApp.DTOs.GroupDtos;
+﻿namespace ProductionApp.DTOs.GroupDtos;
 
 public class GroupAddDto : IBaseDto
 {

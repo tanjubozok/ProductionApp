@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using ProductionApp.DTOs.StockDtos;
-
-namespace ProductionApp.Service.ValidationRules.StockValidators;
+﻿namespace ProductionApp.Service.ValidationRules.StockValidators;
 
 public class StockUpdateDtoValidator : AbstractValidator<StockUpdateDto>
 {

@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProductionApp.Entities.Models;
-
-namespace ProductionApp.Repository.Configurations;
+﻿namespace ProductionApp.Repository.Configurations;
 
 public class DistrictConfiguration : IEntityTypeConfiguration<District>
 {

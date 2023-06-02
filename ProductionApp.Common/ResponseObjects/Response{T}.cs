@@ -1,8 +1,4 @@
-﻿using ProductionApp.Common.Abstract;
-using ProductionApp.Common.ComplexTypes;
-using ProductionApp.Entities.Abstract;
-
-namespace ProductionApp.Common.ResponseObjects;
+﻿namespace ProductionApp.Common.ResponseObjects;
 
 public class Response<T> : Response, IResponse<T>, IBaseEntity
 {

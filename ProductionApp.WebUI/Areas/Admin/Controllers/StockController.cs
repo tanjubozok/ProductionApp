@@ -1,13 +1,4 @@
-﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using ProductionApp.Common.ComplexTypes;
-using ProductionApp.Common.InfoMessages;
-using ProductionApp.DTOs.StockDtos;
-using ProductionApp.Service.Abstract;
-using ProductionApp.WebUI.CustomFilters;
-
-namespace ProductionApp.WebUI.Areas.Admin.Controllers;
+﻿namespace ProductionApp.WebUI.Areas.Admin.Controllers;
 
 [Area(AreaInfo.Admin)]
 public class StockController : Controller

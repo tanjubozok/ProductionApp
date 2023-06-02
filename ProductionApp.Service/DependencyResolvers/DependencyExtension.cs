@@ -1,23 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using ProductionApp.DTOs.GroupDtos;
-using ProductionApp.DTOs.StockDtos;
-using ProductionApp.Entities.Models;
-using ProductionApp.Repository.Abstract;
-using ProductionApp.Repository.Context;
-using ProductionApp.Repository.Repositories;
-using ProductionApp.Repository.UnitOfWorks;
-using ProductionApp.Service.Abstract;
-using ProductionApp.Service.Manager;
-using ProductionApp.Service.Mappings.Helpers;
-using ProductionApp.Service.ValidationRules.GroupValidators;
-using ProductionApp.Service.ValidationRules.StockValidators;
-
-namespace ProductionApp.Service.DependencyResolvers;
+﻿namespace ProductionApp.Service.DependencyResolvers;
 
 public static class DependencyExtension
 {

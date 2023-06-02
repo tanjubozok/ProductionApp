@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using ProductionApp.Entities.Models;
-using ProductionApp.Repository.Configurations;
-using ProductionApp.Repository.Seeds;
-
-namespace ProductionApp.Repository.Context;
+﻿namespace ProductionApp.Repository.Context;
 
 public class DatabaseContext : IdentityDbContext<AppUser, AppRole, int>
 {
